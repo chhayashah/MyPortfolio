@@ -1,0 +1,27 @@
+.portfolio-navbar {
+    background-color: #343a40;
+    padding: 10px 20px;
+}
+
+.portfolio-brand {
+    color: #fff;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.portfolio-navbar .nav-link {
+    color: #fff !important;
+    margin-left: 20px;
+    font-weight: 500;
+}
+
+.portfolio-navbar .nav-link:hover {
+    color: #17a2b8 !important;
+}
+.navbar-toggler {
+    border-color: white; 
+}
+.navbar-toggler-icon {
+    filter: brightness(0) invert(1);
+    /* Makes the default black icon white */
+}
