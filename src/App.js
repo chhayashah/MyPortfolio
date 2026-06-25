@@ -1,11 +1,11 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-import Navbar from './components/navbar/Navbar';
-import Home from './pages/home/Home';
-import Skills from './pages/skills/Skills';
-import Experience from './pages/experience/experience';
-import Project from './pages/projects/Project';
-import Footer from './pages/footer/Footer';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import Navbar from "./components/navbar/Navbar";
+import Home from "./pages/home/Home";
+import Skills from "./pages/skills/Skills";
+import Experience from "./pages/experience/experience";
+import Project from "./pages/projects/Project";
+import Footer from "./pages/footer/Footer";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
       <Skills />
       <Experience />
       <Project />
-      <Footer/>
+      <Footer />
     </div>
   );
 }

@@ -1,27 +1,74 @@
 .portfolio-navbar {
-    background-color: #343a40;
-    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(10, 15, 30, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid transparent;
+    padding: 14px 0;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.portfolio-navbar.scrolled {
+    background: rgba(10, 15, 30, 0.92);
+    border-bottom-color: var(--color-border);
 }
 
 .portfolio-brand {
-    color: #fff;
-    font-weight: bold;
-    font-size: 24px;
+    font-family: var(--font-display) !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+    color: #fff !important;
+    letter-spacing: 0.05em;
+    background: var(--color-accent);
+    padding: 6px 12px !important;
+    border-radius: 8px;
 }
 
 .portfolio-navbar .nav-link {
-    color: #fff !important;
-    margin-left: 20px;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
     font-weight: 500;
+    color: var(--color-muted) !important;
+    letter-spacing: 0.03em;
+    padding: 6px 14px !important;
+    border-radius: var(--radius-sm);
+    transition: color var(--transition), background var(--transition);
+    position: relative;
+}
+
+.portfolio-navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 16px;
+    height: 2px;
+    background: var(--color-accent);
+    border-radius: 2px;
+    transition: transform 0.25s ease;
 }
 
 .portfolio-navbar .nav-link:hover {
-    color: #17a2b8 !important;
+    color: var(--color-text) !important;
+    background: var(--color-tag-bg);
 }
+
+.portfolio-navbar .nav-link.nav-active {
+    color: var(--color-text) !important;
+}
+
+.portfolio-navbar .nav-link.nav-active::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
 .navbar-toggler {
-    border-color: white; 
+    border-color: var(--color-border) !important;
 }
+
 .navbar-toggler-icon {
-    filter: brightness(0) invert(1);
-    /* Makes the default black icon white */
+    filter: invert(1);
 }

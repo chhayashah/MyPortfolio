@@ -1,26 +1,85 @@
-import React from 'react';
-import './Skills.css';
-import { FaHtml5, FaCss3Alt, FaJsSquare, FaReact, FaJava } from 'react-icons/fa';
-import { SiMysql, SiJupyter, SiHibernate, SiBootstrap, SiMaterialdesign } from 'react-icons/si';
+import React from "react";
+import "./Skills.css";
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaJsSquare,
+  FaReact,
+  FaJava,
+  FaNodeJs,
+  FaGitAlt,
+  FaPython,
+} from "react-icons/fa";
+import {
+  SiMysql,
+  SiMongodb,
+  SiExpress,
+  SiRedux,
+  SiPostman,
+  SiGithub,
+} from "react-icons/si";
 
-const Skills = () => {
-  return (
-    <section id="skills" className="skills-section">
-      <h2>Skills</h2>
-      <div className="skills-container">
-        <div className="skill"><FaHtml5 style={{ color: '#e34c26' }} className="icon" /><span>HTML</span></div>
-        <div className="skill"><FaCss3Alt style={{ color: '#2965f1' }} className="icon" /><span>CSS</span></div>
-        <div className="skill"><FaJsSquare style={{ color: '#f0db4f' }} className="icon" /><span>JavaScript</span></div>
-        <div className="skill"><FaReact style={{ color: '#61dbfb' }} className="icon" /><span>React</span></div>
-        <div className="skill"><FaJava style={{ color: '#f89820' }} className="icon" /><span>Java</span></div>
-        <div className="skill"><SiMysql style={{ color: '#00758f' }} className="icon" /><span>MySQL</span></div>
-        <div className="skill"><SiJupyter style={{ color: '#f37726' }} className="icon" /><span>JDBC</span></div>
-        <div className="skill"><SiHibernate style={{ color: '#59666C' }} className="icon" /><span>Hibernate</span></div>
-        <div className="skill"><SiBootstrap style={{ color: '#7952b3' }} className="icon" /><span>Bootstrap</span></div>
-        <div className="skill"><SiMaterialdesign style={{ color: '#757575' }} className="icon" /><span>Material UI</span></div>
-      </div>
-    </section>
-  );
-};
+const skillCategories = [
+  {
+    label: "Languages",
+    skills: [
+      { icon: <FaJsSquare />, name: "JavaScript (ES6+)", color: "#f0db4f" },
+      { icon: <FaPython />, name: "Python", color: "#3776AB" },
+      { icon: <FaJava />, name: "Java", color: "#f89820" },
+    ],
+  },
+  {
+    label: "Frontend",
+    skills: [
+      { icon: <FaReact />, name: "ReactJS", color: "#61dbfb" },
+      { icon: <SiRedux />, name: "Redux", color: "#764abc" },
+      { icon: <FaHtml5 />, name: "HTML5", color: "#e34c26" },
+      { icon: <FaCss3Alt />, name: "CSS3", color: "#2965f1" },
+    ],
+  },
+  {
+    label: "Backend & Databases",
+    skills: [
+      { icon: <FaNodeJs />, name: "Node.js", color: "#68a063" },
+      { icon: <SiExpress />, name: "Express.js", color: "#fff" },
+      { icon: <SiMysql />, name: "MySQL", color: "#00758f" },
+      { icon: <SiMongodb />, name: "MongoDB", color: "#4DB33D" },
+    ],
+  },
+  {
+    label: "Tools & Practices",
+    skills: [
+      { icon: <FaGitAlt />, name: "Git", color: "#f05032" },
+      { icon: <SiGithub />, name: "GitHub", color: "#fff" },
+      { icon: <SiPostman />, name: "Postman", color: "#ef5b25" },
+    ],
+  },
+];
+
+const Skills = () => (
+  <section id="skills" className="skills-section">
+    <div className="section-header">
+      <span className="section-eyebrow">What I work with</span>
+      <h2 className="section-title">Technical Skills</h2>
+    </div>
+    <div className="skills-categories">
+      {skillCategories.map((cat) => (
+        <div key={cat.label} className="skill-category">
+          <h3 className="category-label">{cat.label}</h3>
+          <div className="skill-grid">
+            {cat.skills.map(({ icon, name, color }) => (
+              <div key={name} className="skill-chip">
+                <span className="skill-icon" style={{ color }}>
+                  {icon}
+                </span>
+                <span className="skill-name">{name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+);
 
 export default Skills;

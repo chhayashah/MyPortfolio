@@ -1,26 +1,50 @@
-import React from 'react';
-import './Footer.css';
-import { FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
+import React from "react";
+import "./Footer.css";
+import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
 
-const Footer = () => {
-  return (
-    <footer className="footer" id="footer">
-      <nav className="footer-nav">
-        <a href="#home">Home</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-      </nav>
-
-      <div className="footer-icons">
-        <a href="https://linkedin.com/in/chhaya-shah-2418b3239" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
-        <a href="https://github.com/chhayashah" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
-        <a href="https://x.com/ChhayaS98601123" target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
+const Footer = () => (
+  <footer id="footer" className="footer">
+    <div className="footer-inner">
+      <div className="footer-left">
+        <span className="footer-name">Chhaya Shah</span>
+        <p className="footer-tag">
+          SDE · Full-Stack Engineer · Open to opportunities
+        </p>
       </div>
-
-      <p>© {new Date().getFullYear()} Chhaya Shah</p>
-    </footer>
-  );
-};
+      <div className="footer-links">
+        <a
+          href="https://linkedin.com/in/chhaya-shah-2418b3239"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+        >
+          <FaLinkedin />
+        </a>
+        <a
+          href="https://github.com/chhayashah"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+        >
+          <FaGithub />
+        </a>
+        <a
+          href="https://x.com/ChhayaS98601123"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Twitter"
+        >
+          <FaTwitter />
+        </a>
+        <a href="mailto:chhayashah9754@gmail.com" aria-label="Email">
+          <FaEnvelope />
+        </a>
+      </div>
+    </div>
+    <div className="footer-bottom">
+      <span>© {new Date().getFullYear()} Chhaya Shah. Built with ReactJS.</span>
+    </div>
+  </footer>
+);
 
 export default Footer;
