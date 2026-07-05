@@ -1,74 +1,149 @@
-.portfolio-navbar {
+.nav-header {
     position: fixed;
     top: 0;
-    width: 100%;
-    z-index: 1000;
-    background: rgba(10, 15, 30, 0.6);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: transparent;
     border-bottom: 1px solid transparent;
-    padding: 14px 0;
-    transition: background 0.3s ease, border-color 0.3s ease;
+    transition: background var(--transition), border-color var(--transition);
 }
 
-.portfolio-navbar.scrolled {
-    background: rgba(10, 15, 30, 0.92);
-    border-bottom-color: var(--color-border);
+.nav-header.scrolled {
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    border-bottom: 1px solid var(--border);
 }
 
-.portfolio-brand {
-    font-family: var(--font-display) !important;
-    font-weight: 700 !important;
-    font-size: 1.1rem !important;
-    color: #fff !important;
-    letter-spacing: 0.05em;
-    background: var(--color-accent);
-    padding: 6px 12px !important;
-    border-radius: 8px;
-}
-
-.portfolio-navbar .nav-link {
-    font-family: var(--font-body);
-    font-size: 0.88rem;
-    font-weight: 500;
-    color: var(--color-muted) !important;
-    letter-spacing: 0.03em;
-    padding: 6px 14px !important;
-    border-radius: var(--radius-sm);
-    transition: color var(--transition), background var(--transition);
-    position: relative;
-}
-
-.portfolio-navbar .nav-link::after {
-    content: '';
+.nav-progress {
     position: absolute;
-    bottom: 2px;
-    left: 50%;
-    transform: translateX(-50%) scaleX(0);
-    width: 16px;
+    top: 0;
+    left: 0;
     height: 2px;
-    background: var(--color-accent);
+    background: var(--accent);
+    transition: width 0.1s linear;
+}
+
+.nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+}
+
+.nav-brand {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--text);
+    letter-spacing: -0.02em;
+}
+
+.nav-brand-dot {
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+}
+
+.nav-links a {
+    position: relative;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: color var(--transition);
+    padding: 4px 0;
+}
+
+.nav-links a:hover {
+    color: var(--text);
+}
+
+.nav-links a.active {
+    color: var(--text);
+}
+
+.nav-links a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 2px;
+    background: var(--accent);
     border-radius: 2px;
-    transition: transform 0.25s ease;
 }
 
-.portfolio-navbar .nav-link:hover {
-    color: var(--color-text) !important;
-    background: var(--color-tag-bg);
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-.portfolio-navbar .nav-link.nav-active {
-    color: var(--color-text) !important;
+.nav-resume-btn {
+    padding: 9px 16px;
+    font-size: 13.5px;
 }
 
-.portfolio-navbar .nav-link.nav-active::after {
-    transform: translateX(-50%) scaleX(1);
+.nav-menu-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 18px;
+    cursor: pointer;
 }
 
-.navbar-toggler {
-    border-color: var(--color-border) !important;
+.nav-mobile-panel {
+    display: none;
 }
 
-.navbar-toggler-icon {
-    filter: invert(1);
+@media (max-width: 860px) {
+    .nav-links {
+        display: none;
+    }
+
+    .nav-resume-btn {
+        display: none;
+    }
+
+    .nav-menu-btn {
+        display: inline-flex;
+    }
+
+    .nav-mobile-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding: 12px 24px 24px;
+        background: var(--bg-elevated);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .nav-mobile-panel a {
+        padding: 12px 4px;
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--text-secondary);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .nav-mobile-panel a.active {
+        color: var(--accent);
+    }
+
+    .nav-mobile-panel .btn {
+        margin-top: 12px;
+        width: 100%;
+    }
 }

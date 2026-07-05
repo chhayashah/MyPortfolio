@@ -1,5 +1,4 @@
 import React from "react";
-import "./Skills.css";
 import {
   FaHtml5,
   FaCss3Alt,
@@ -18,6 +17,8 @@ import {
   SiPostman,
   SiGithub,
 } from "react-icons/si";
+import Reveal from "../../components/common/Reveal";
+import "./Skills.css";
 
 const skillCategories = [
   {
@@ -41,7 +42,7 @@ const skillCategories = [
     label: "Backend & Databases",
     skills: [
       { icon: <FaNodeJs />, name: "Node.js", color: "#68a063" },
-      { icon: <SiExpress />, name: "Express.js", color: "#fff" },
+      { icon: <SiExpress />, name: "Express.js", color: "#b0b3ba" },
       { icon: <SiMysql />, name: "MySQL", color: "#00758f" },
       { icon: <SiMongodb />, name: "MongoDB", color: "#4DB33D" },
     ],
@@ -50,34 +51,43 @@ const skillCategories = [
     label: "Tools & Practices",
     skills: [
       { icon: <FaGitAlt />, name: "Git", color: "#f05032" },
-      { icon: <SiGithub />, name: "GitHub", color: "#fff" },
+      { icon: <SiGithub />, name: "GitHub", color: "#b0b3ba" },
       { icon: <SiPostman />, name: "Postman", color: "#ef5b25" },
     ],
   },
 ];
 
 const Skills = () => (
-  <section id="skills" className="skills-section">
-    <div className="section-header">
-      <span className="section-eyebrow">What I work with</span>
-      <h2 className="section-title">Technical Skills</h2>
-    </div>
-    <div className="skills-categories">
-      {skillCategories.map((cat) => (
-        <div key={cat.label} className="skill-category">
-          <h3 className="category-label">{cat.label}</h3>
-          <div className="skill-grid">
-            {cat.skills.map(({ icon, name, color }) => (
-              <div key={name} className="skill-chip">
-                <span className="skill-icon" style={{ color }}>
-                  {icon}
-                </span>
-                <span className="skill-name">{name}</span>
-              </div>
-            ))}
-          </div>
+  <section id="skills" className="skills-section section">
+    <div className="container">
+      <Reveal>
+        <div className="section-header">
+          <span className="section-eyebrow">What I work with</span>
+          <h2 className="section-title">Technical Skills</h2>
+          <p className="section-subtitle">
+            A focused toolkit for building secure, scalable full-stack products
+            — from pixel-perfect UI to resilient APIs and data layers.
+          </p>
         </div>
-      ))}
+      </Reveal>
+
+      <div className="skills-categories">
+        {skillCategories.map((cat, i) => (
+          <Reveal key={cat.label} delay={i * 0.08} className="skill-category">
+            <h3 className="category-label">{cat.label}</h3>
+            <div className="skill-grid">
+              {cat.skills.map(({ icon, name, color }) => (
+                <div key={name} className="skill-chip">
+                  <span className="skill-icon" style={{ color }}>
+                    {icon}
+                  </span>
+                  <span className="skill-name">{name}</span>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        ))}
+      </div>
     </div>
   </section>
 );

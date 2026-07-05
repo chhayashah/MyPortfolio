@@ -1,5 +1,4 @@
 import React from "react";
-import "./Project.css";
 import {
   FaGithub,
   FaExternalLinkAlt,
@@ -15,15 +14,20 @@ import {
   SiMysql,
   SiSocketdotio,
   SiReact,
-  SiExpress,
   SiFirebase,
 } from "react-icons/si";
+import Reveal from "../../components/common/Reveal";
+import "./Project.css";
 
 const featured = [
   {
     title: "DataSphere",
     subtitle: "Real-Time Data Analytics Platform",
     stack: ["MERN", "Socket.io", "JWT", "RBAC", "MongoDB"],
+    problem:
+      "Teams needed a way to ingest large CSV datasets and see analytics update live, without a slow, single-user dashboard.",
+    solution:
+      "Built a full-stack MVC platform with Socket.io-powered live dashboards and a resilient CSV ingestion pipeline.",
     description:
       "Full-stack analytics platform with MVC architecture, real-time Socket.io dashboards, and a CSV ingestion pipeline. MongoDB aggregation reduced query time by ~40%.",
     metrics: [
@@ -32,13 +36,17 @@ const featured = [
       { icon: <FaUsers />, value: "Multi", label: "user JWT sessions" },
     ],
     github: "https://github.com/chhayashah/DataSpheree",
-    live: true,
-    color: "#6366f1",
+    live: false,
+    color: "#6e6bfa",
   },
   {
     title: "JobSpark",
     subtitle: "AI-Powered Job Portal",
     stack: ["ReactJS", "Node.js", "MongoDB", "MySQL", "Socket.io", "JWT"],
+    problem:
+      "Recruiters were manually screening resumes with no signal on fit, and candidates had no visibility into match quality.",
+    solution:
+      "Shipped a TF-IDF + cosine-similarity matching engine with a dual-database architecture and live recruiter analytics.",
     description:
       "AI resume matching with TF-IDF + cosine similarity, dual-database architecture, real-time Socket.io notifications, and recruiter analytics via Recharts.",
     metrics: [
@@ -48,7 +56,7 @@ const featured = [
     ],
     github: "https://github.com/chhayashah/jobspark_job-portal",
     live: false,
-    color: "#8b5cf6",
+    color: "#3ecf8e",
   },
 ];
 
@@ -97,73 +105,101 @@ const stackIconMap = {
 };
 
 const Project = () => (
-  <section id="projects" className="project-section">
-    <div className="proj-inner">
-      <div className="section-header">
-        <span className="section-eyebrow">What I've built</span>
-        <h2 className="section-title">Projects</h2>
-      </div>
+  <section id="projects" className="project-section section">
+    <div className="container proj-inner">
+      <Reveal>
+        <div className="section-header">
+          <span className="section-eyebrow">What I've built</span>
+          <h2 className="section-title">Projects</h2>
+          <p className="section-subtitle">
+            Selected work spanning real-time systems, AI-assisted matching, and
+            developer tooling.
+          </p>
+        </div>
+      </Reveal>
 
-      {/* Featured Cards */}
       <div className="featured-grid">
         {featured.map((p, i) => (
-          <div key={i} className="feat-card" style={{ "--accent": p.color }}>
-            <div className="feat-top">
-              <div>
-                <span className="feat-badge">Featured Project</span>
-                <h3 className="feat-title">{p.title}</h3>
-                <p className="feat-subtitle">{p.subtitle}</p>
-              </div>
-              <div className="feat-links">
-                <a
-                  href={p.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="GitHub"
-                >
-                  <FaGithub />
-                </a>
-                {p.live && (
-                  <a href="#projects" title="Live Demo">
-                    <FaExternalLinkAlt />
-                  </a>
-                )}
-              </div>
-            </div>
-
-            <p className="feat-desc">{p.description}</p>
-
-            <div className="feat-metrics">
-              {p.metrics.map((m, j) => (
-                <div key={j} className="metric">
-                  <span className="metric-icon">{m.icon}</span>
-                  <span className="metric-value">{m.value}</span>
-                  <span className="metric-label">{m.label}</span>
+          <Reveal
+            key={i}
+            delay={i * 0.1}
+            className="feat-card card"
+            as="article"
+            style={{ "--accent": p.color }}
+          >
+            <div>
+              <div className="feat-top">
+                <div>
+                  <span className="feat-badge">Featured Project</span>
+                  <h3 className="feat-title">{p.title}</h3>
+                  <p className="feat-subtitle">{p.subtitle}</p>
                 </div>
-              ))}
-            </div>
-
-            <div className="feat-stack">
-              {p.stack.map((t) => (
-                <span key={t} className="stack-tag">
-                  {stackIconMap[t] && (
-                    <span className="stack-icon">{stackIconMap[t]}</span>
+                <div className="feat-links">
+                  <a
+                    href={p.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${p.title} source on GitHub`}
+                  >
+                    <FaGithub />
+                  </a>
+                  {p.live && (
+                    <a href="#projects" aria-label={`${p.title} live demo`}>
+                      <FaExternalLinkAlt />
+                    </a>
                   )}
-                  {t}
-                </span>
-              ))}
+                </div>
+              </div>
+
+              <p className="feat-desc">{p.description}</p>
+
+              <div className="feat-case">
+                <div>
+                  <span className="feat-case-label">Problem</span>
+                  <p>{p.problem}</p>
+                </div>
+                <div>
+                  <span className="feat-case-label">Solution</span>
+                  <p>{p.solution}</p>
+                </div>
+              </div>
+
+              <div className="feat-metrics">
+                {p.metrics.map((m, j) => (
+                  <div key={j} className="metric">
+                    <span className="metric-icon">{m.icon}</span>
+                    <span className="metric-value">{m.value}</span>
+                    <span className="metric-label">{m.label}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="feat-stack">
+                {p.stack.map((t) => (
+                  <span key={t} className="stack-tag">
+                    {stackIconMap[t] && (
+                      <span className="stack-icon">{stackIconMap[t]}</span>
+                    )}
+                    {t}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
+          </Reveal>
         ))}
       </div>
 
-      {/* Other Projects */}
-      <div className="other-header">
+      <Reveal className="other-header">
         <span className="section-eyebrow">More work</span>
-      </div>
+      </Reveal>
       <div className="other-grid">
         {others.map((p, i) => (
-          <div key={i} className="other-card">
+          <Reveal
+            key={i}
+            delay={i * 0.05}
+            className="other-card card"
+            as="article"
+          >
             <div className="other-top">
               <span className="other-icon">{p.icon}</span>
               <a
@@ -171,6 +207,7 @@ const Project = () => (
                 target="_blank"
                 rel="noopener noreferrer"
                 className="other-gh"
+                aria-label={`${p.title} source on GitHub`}
               >
                 <FaGithub />
               </a>
@@ -183,7 +220,7 @@ const Project = () => (
                 <span key={t}>{t}</span>
               ))}
             </div>
-          </div>
+          </Reveal>
         ))}
       </div>
     </div>
