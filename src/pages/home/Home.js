@@ -99,7 +99,7 @@ const Home = () => {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
         >
           <div className="avatar-ring">
-            <img src="./images/chhayashah.jpg" alt="Portrait of Chhaya Shah" width="280" height="280" />
+            <img src="./images/photo_2026-07-06_15-57-22.jpg" alt="Portrait of Chhaya Shah" width="280" height="280" />
           </div>
           <div className="avatar-glow" aria-hidden="true"></div>
         </motion.div>
