@@ -52,7 +52,7 @@ const Home = () => {
 
           <motion.div className="home-cta" custom={5} initial="hidden" animate="show" variants={fadeUp}>
             <a
-              href="./images/ChhayaShah_page-0001.jpg"
+              href="./images/chhayashah.pdf"
               className="btn btn-primary"
               target="_blank"
               rel="noopener noreferrer"
